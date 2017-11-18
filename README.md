@@ -1,3 +1,5 @@
+### Flask mega-tutorial 1.0 documentation
+### 本系列的原文名为：The Flask Mega-Tutorial ，作者是 Miguel Grinberg 
 ### python2.7
 ### flask0.12
 
