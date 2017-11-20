@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import imp
 from migrate.versioning import api
-from app import db
+from application import db
 from config import SQLALCHEMY_DATABASE_URI
 from config import SQLALCHEMY_MIGRATE_REPO
 
