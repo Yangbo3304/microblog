@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import render_template
 from flask import flash, url_for, g, session, request, redirect
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_user, current_user, logout_user, login_required
 from application import app, lm, oid, db
 from .models import User
 from .forms import LoginForm
@@ -19,6 +19,7 @@ def load_user(id):
 
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
+@login_required
 def index():
     user = g.user
     # 伪造的帖子数组
@@ -72,3 +73,17 @@ def after_login(resp):
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+@app.route('/user/<nickname>')
+@login_required
+def user(nickname):
+    user = User.query.filter_by(nickname=nickname).first()
+    if user == None:
+        flash('User ' + nickname + ' not found.')
+        return redirect(url_for('index'))
+    posts = [
+        {'author': user, 'body': 'Test post #1'},
+        {'author': user, 'body': 'Test post #2'}
+    ]
+    return render_template('user.html', user=user, posts=posts)
