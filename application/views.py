@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import render_template
 from flask import flash, url_for, g, session, request, redirect
-from flask_login import login_user, current_user
+from flask_login import login_user, current_user, logout_user
 from application import app, lm, oid, db
 from .models import User
 from .forms import LoginForm
@@ -66,3 +66,9 @@ def after_login(resp):
         session.pop('remember_me', None)
     login_user(user, remember=remember_me)
     return redirect(request.args.get('next') or url_for('index'))
+
+
+@app.route('/logout', methods=['GET'])
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
