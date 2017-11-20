@@ -12,7 +12,7 @@
     <div>MicroBlog:
         <a href="{{url_for('index')}}">Home</a>
         {% if g.user.is_authenticated %}
-        | <a href="{{urll_for('logout')}}">Logout</a>
+        | <a href="{{url_for('logout')}}">Logout</a>
         {% endif %}
     </div>
     <hr>
