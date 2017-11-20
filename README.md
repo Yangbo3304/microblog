@@ -2,7 +2,7 @@
 ### flask0.12
 
 ## microblog
-#### Windows
+#### Windows --- requirements.txt
 #### $ flask\Scripts\pip install flask==0.12.2
 #### $ flask\Scripts\pip install flask-login==0.4.0
 #### $ flask\Scripts\pip install flask-openid==1.2.5
