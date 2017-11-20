@@ -19,6 +19,7 @@ def load_user(id):
 
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
+@login_required
 def index():
     user = g.user
     # 伪造的帖子数组
